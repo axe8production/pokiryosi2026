@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-POKIR Mandiri - Kecamatan Gajahmungkur</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="bg-red-700 text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="bg-white p-2 rounded-lg text-red-700">
+                    <i data-lucide="vote" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <h1 class="text-lg font-bold leading-none">E-POKIR MANDIRI</h1>
+                    <span class="text-xs text-red-200">Kecamatan Gajahmungkur • APBD 2024</span>
+                </div>
+            </div>
+            <div class="hidden md:flex items-center space-x-2 text-sm bg-red-800 px-3 py-1.5 rounded-full text-red-100">
+                <span class="w-2.5 h-2.5 bg-green-400 rounded-full animate-pulse"></span>
+                <span>Portal Aspirasi Konstituen</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+        <!-- HEADER PENGUMUMAN -->
+        <div class="bg-gradient-to-r from-red-800 to-red-600 rounded-2xl p-6 md:p-8 text-white shadow-xl mb-8 relative overflow-hidden">
+            <div class="absolute right-0 bottom-0 opacity-10 pointer-events-none transform translate-y-1/4 translate-x-1/4">
+                <i data-lucide="landmark" class="w-96 h-96"></i>
+            </div>
+            <div class="relative z-10 max-w-3xl">
+                <span class="bg-red-500/30 text-red-100 text-xs font-semibold px-2.5 py-1 rounded-full uppercase tracking-wider">Aspirasi Rakyat</span>
+                <h2 class="text-2xl md:text-4xl font-extrabold mt-3 mb-2">Sampaikan Pokok Pikiran Anda Secara Langsung</h2>
+                <p class="text-red-100 text-sm md:text-base leading-relaxed">
+                    Portal ini didesain khusus berdasarkan format resmi Pokir DPRD Kota Semarang. Isi formulir di bawah ini dengan lengkap untuk mendaftarkan usulan pembangunan di wilayah RT/RW Anda.
+                </p>
+                <div class="mt-6 flex flex-wrap gap-4 text-xs font-medium text-red-100">
+                    <div class="flex items-center gap-1.5 bg-black/15 px-3 py-1.5 rounded-lg">
+                        <i data-lucide="user" class="w-4 h-4"></i>
+                        <span>DPRD Pengusul: Yosi Yonardo GRP, S.E., M.Sos</span>
+                    </div>
+                    <div class="flex items-center gap-1.5 bg-black/15 px-3 py-1.5 rounded-lg">
+                        <i data-lucide="layers" class="w-4 h-4"></i>
+                        <span>Fraksi PDI Perjuangan (Komisi B)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <!-- FORM INPUT (LEFT / 5 COLS) -->
+            <div class="lg:col-span-5 space-y-6">
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-4 mb-6">
+                        <div class="flex items-center space-x-2">
+                            <i data-lucide="clipboard-edit" class="w-5 h-5 text-red-600"></i>
+                            <h3 class="text-lg font-bold text-slate-800">Formulir Usulan Baru</h3>
+                        </div>
+                        <span class="text-xs text-slate-400 font-mono">* Wajib Diisi</span>
+                    </div>
+
+                    <form id="pokirForm" class="space-y-4">
+                        <!-- USULAN -->
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Jenis Usulan *</label>
+                            <select id="usulan" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all">
+                                <option value="" disabled selected>Pilih Jenis Usulan</option>
+                                <option value="pengaspalan">Pengaspalan Jalan</option>
+                                <option value="pembangunan balai rt">Pembangunan Balai RT</option>
+                                <option value="pembangunan balai rw">Pembangunan Balai RW</option>
+                                <option value="Rehabilitasi Balai Pertemuan">Rehabilitasi Balai Pertemuan</option>
+                                <option value="Talud">Talud / Penahan Longsor</option>
+                                <option value="Pembangunan Taman">Pembangunan Taman / Ruang Terbuka</option>
+                                <option value="Perbaikan Saluran Air/Selokan">Perbaikan Saluran Air / Selokan</option>
+                                <option value="Penerangan Jalan Umum (PJU)">Penerangan Jalan Umum (PJU)</option>
+                                <option value="Lainnya">Lainnya (Tulis di Keterangan)</option>
+                            </select>
+                        </div>
+
+                        <!-- PERMASALAHAN -->
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Permasalahan *</label>
+                            <input type="text" id="permasalahan" required placeholder="Contoh: Jalan rusak/mengelupas, rawan longsor, dsb." class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all">
+                        </div>
+
+                        <!-- ALAMAT JALAN -->
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Alamat (Nama Jalan/Blok) *</label>
+                            <input type="text" id="alamatJalan" required placeholder="Contoh: Jl. Karangrejo Timur No. 12" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all">
+                        </div>
+
+                        <!-- GRID RT, RW, KELURAHAN -->
+                        <div class="grid grid-cols-3 gap-3">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">RT *</label>
+                                <input type="number" id="rt" required min="1" placeholder="00" class="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all text-center">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">RW *</label>
+                                <input type="number" id="rw" required min="1" placeholder="00" class="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all text-center">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Kelurahan *</label>
+                                <select id="kelurahan" required class="w-full px-2 py-2 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all">
+                                    <option value="" disabled selected>Pilih Kel.</option>
+                                    <option value="Bendungan">Bendungan</option>
+                                    <option value="Gajahmungkur">Gajahmungkur</option>
+                                    <option value="Karangrejo">Karangrejo</option>
+                                    <option value="Lempongsari">Lempongsari</option>
+                                    <option value="Petompon">Petompon</option>
+                                    <option value="Sampangan">Sampangan</option>
+                                    <option value="Bendanduwur">Bendanduwur</option>
+                                    <option value="Bendan Ngisor">Bendan Ngisor</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- KECAMATAN (AUTOFILL) -->
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Kecamatan</label>
+                            <input type="text" id="kecamatan" value="gajahmungkur" readonly class="w-full px-3.5 py-2.5 bg-slate-100 border border-slate-200 text-slate-500 rounded-lg text-sm cursor-not-allowed uppercase">
+                        </div>
+
+                        <!-- SPESIFIKASI VOLUME -->
+                        <div class="border border-slate-200 rounded-xl p-4 bg-slate-50/50 space-y-3">
+                            <span class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1 flex items-center gap-1">
+                                <i data-lucide="scaling" class="w-4 h-4 text-slate-500"></i> Spesifikasi Volume
+                            </span>
+                            
+                            <div class="grid grid-cols-2 gap-3">
+                                <div>
+                                    <label class="block text-xs text-slate-600 mb-1">Lebar / Dimensi A</label>
+                                    <input type="text" id="volumeLebar" placeholder="Contoh: 3 m" class="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all">
+                                </div>
+                                <div>
+                                    <label class="block text-xs text-slate-600 mb-1">Panjang / Dimensi B</label>
+                                    <input type="text" id="volumePanjang" placeholder="Contoh: 100 m" class="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs text-slate-600 mb-1">Volume Global / Lainnya (Alternatif)</label>
+                                <input type="text" id="volumeGlobal" placeholder="Contoh: 160 m³ atau 840,5 m²" class="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all">
+                                <span class="text-[10px] text-slate-400 block mt-0.5">Gunakan jika usulan berupa bangunan atau volume luas secara keseluruhan.</span>
+                            </div>
+                        </div>
+
+                        <!-- KONTAK / WA -->
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">No. Telp / WhatsApp *</label>
+                            <div class="relative">
+                                <span class="absolute left-3 top-2.5 text-slate-400 text-sm font-semibold">+62</span>
+                                <input type="tel" id="telp" required placeholder="85xxxxxxxxxx" class="w-full pl-12 pr-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all">
+                            </div>
+                        </div>
+
+                        <!-- ANGGARAN -->
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Estimasi Anggaran / Kekurangan Dana (Opsional)</label>
+                            <input type="text" id="anggaran" placeholder="Contoh: kekurangan dana Rp. 15.000.000" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all">
+                        </div>
+
+                        <!-- KETERANGAN TAMBAHAN -->
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Keterangan Tambahan / Detail Spesifik</label>
+                            <textarea id="keterangan" rows="2" placeholder="Contoh: Keramik bermotif kasar tidak licin, aspal di tanjakan curam." class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all"></textarea>
+                        </div>
+
+                        <!-- TOMBOL SUBMIT -->
+                        <button type="submit" class="w-full bg-red-700 hover:bg-red-800 text-white font-bold py-3 px-4 rounded-xl shadow-md transition-all flex items-center justify-center space-x-2">
+                            <i data-lucide="plus-circle" class="w-5 h-5"></i>
+                            <span>Tambahkan Usulan Pokir</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- TABLE VIEW & CONTROLS (RIGHT / 7 COLS) -->
+            <div class="lg:col-span-7 space-y-6">
+                <!-- STATS & ACTIONS -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-200 flex items-center space-x-3">
+                        <div class="bg-red-100 p-2.5 rounded-xl text-red-700">
+                            <i data-lucide="file-text" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-slate-400 block font-medium">Total Usulan</span>
+                            <span id="statTotal" class="text-2xl font-bold text-slate-800">0</span>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-200 flex items-center space-x-3">
+                        <div class="bg-amber-100 p-2.5 rounded-xl text-amber-700">
+                            <i data-lucide="map-pin" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-slate-400 block font-medium">Kelurahan Terbanyak</span>
+                            <span id="statKelurahan" class="text-sm font-bold text-slate-800 truncate block max-w-[120px]">-</span>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-200 flex items-center space-x-3">
+                        <div class="bg-blue-100 p-2.5 rounded-xl text-blue-700">
+                            <i data-lucide="layers" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-slate-400 block font-medium">Kategori Dominan</span>
+                            <span id="statKategori" class="text-sm font-bold text-slate-800 truncate block max-w-[120px]">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TABLE CARD -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col">
+                    <!-- TABLE HEADER ACTIONS -->
+                    <div class="p-6 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                        <div class="space-y-1">
+                            <h3 class="text-lg font-bold text-slate-800 flex items-center gap-2">
+                                <i data-lucide="table-properties" class="text-red-700"></i> Daftar Usulan Warga
+                            </h3>
+                            <p class="text-xs text-slate-400">Data tersimpan lokal di browser Anda. Anda dapat mengunduh data dalam bentuk CSV kapan saja.</p>
+                        </div>
+                        
+                        <!-- ACTIONS -->
+                        <div class="flex flex-wrap items-center gap-2">
+                            <button id="btnExport" class="bg-green-600 hover:bg-green-700 text-white text-xs font-semibold py-2 px-3.5 rounded-lg shadow-sm transition-all flex items-center gap-1.5">
+                                <i data-lucide="download" class="w-4 h-4"></i>
+                                <span>Ekspor ke CSV</span>
+                            </button>
+                            <button id="btnReset" class="bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-800 text-xs font-semibold py-2 px-3 rounded-lg transition-
