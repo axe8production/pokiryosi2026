@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-POKIR Mandiri - Kecamatan Gajahmungkur</title>
+    <title>E-POKIR Mandiri - DPRD Kota Semarang</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons -->
@@ -26,7 +26,7 @@
                 </div>
                 <div>
                     <h1 class="text-lg font-bold leading-none">E-POKIR MANDIRI</h1>
-                    <span class="text-xs text-red-200">Kecamatan Gajahmungkur • APBD 2024</span>
+                    <span class="text-xs text-red-200">Yosi Yonardo</span>
                 </div>
             </div>
             <div class="hidden md:flex items-center space-x-2 text-sm bg-red-800 px-3 py-1.5 rounded-full text-red-100">
@@ -103,6 +103,17 @@
                             <input type="text" id="alamatJalan" required placeholder="Contoh: Jl. Karangrejo Timur No. 12" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all">
                         </div>
 
+                        <!-- KECAMATAN -->
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Kecamatan *</label>
+                            <select id="kecamatan" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all uppercase">
+                                <option value="" disabled selected>Pilih Kecamatan</option>
+                                <option value="gajahmungkur">Gajahmungkur</option>
+                                <option value="banyumanik">Banyumanik</option>
+                                <option value="gunungpati">Gunungpati</option>
+                            </select>
+                        </div>
+
                         <!-- GRID RT, RW, KELURAHAN -->
                         <div class="grid grid-cols-3 gap-3">
                             <div>
@@ -115,24 +126,10 @@
                             </div>
                             <div>
                                 <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Kelurahan *</label>
-                                <select id="kelurahan" required class="w-full px-2 py-2 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all">
-                                    <option value="" disabled selected>Pilih Kel.</option>
-                                    <option value="Bendungan">Bendungan</option>
-                                    <option value="Gajahmungkur">Gajahmungkur</option>
-                                    <option value="Karangrejo">Karangrejo</option>
-                                    <option value="Lempongsari">Lempongsari</option>
-                                    <option value="Petompon">Petompon</option>
-                                    <option value="Sampangan">Sampangan</option>
-                                    <option value="Bendanduwur">Bendanduwur</option>
-                                    <option value="Bendan Ngisor">Bendan Ngisor</option>
+                                <select id="kelurahan" required disabled class="w-full px-2 py-2 bg-slate-100 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all cursor-not-allowed">
+                                    <option value="" disabled selected>Pilih Kec. dulu</option>
                                 </select>
                             </div>
-                        </div>
-
-                        <!-- KECAMATAN (AUTOFILL) -->
-                        <div>
-                            <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Kecamatan</label>
-                            <input type="text" id="kecamatan" value="gajahmungkur" readonly class="w-full px-3.5 py-2.5 bg-slate-100 border border-slate-200 text-slate-500 rounded-lg text-sm cursor-not-allowed uppercase">
                         </div>
 
                         <!-- SPESIFIKASI VOLUME -->
@@ -215,8 +212,8 @@
                             <i data-lucide="layers" class="w-6 h-6"></i>
                         </div>
                         <div>
-                            <span class="text-xs text-slate-400 block font-medium">Kategori Dominan</span>
-                            <span id="statKategori" class="text-sm font-bold text-slate-800 truncate block max-w-[120px]">-</span>
+                            <span class="text-xs text-slate-400 block font-medium">Kecamatan Terbanyak</span>
+                            <span id="statKecamatan" class="text-sm font-bold text-slate-800 truncate block max-w-[120px]">-</span>
                         </div>
                     </div>
                 </div>
@@ -238,4 +235,151 @@
                                 <i data-lucide="download" class="w-4 h-4"></i>
                                 <span>Ekspor ke CSV</span>
                             </button>
-                            <button id="btnReset" class="bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-800 text-xs font-semibold py-2 px-3 rounded-lg transition-
+                            <button id="btnReset" class="bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-800 text-xs font-semibold py-2 px-3 rounded-lg transition-all flex items-center gap-1.5">
+                                <i data-lucide="trash-2" class="w-4 h-4"></i>
+                                <span>Reset Data</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- SEARCH & FILTER -->
+                    <div class="px-6 py-4 bg-slate-50/50 border-b border-slate-100 flex flex-col sm:flex-row gap-3">
+                        <div class="relative flex-grow">
+                            <i data-lucide="search" class="absolute left-3 top-2.5 w-4.5 h-4.5 text-slate-400"></i>
+                            <input type="text" id="searchInput" placeholder="Cari usulan, permasalahan, jalan, kelurahan, atau kecamatan..." class="w-full pl-10 pr-4 py-2 bg-white border border-slate-300 rounded-lg text-xs focus:ring-1 focus:ring-red-500 focus:border-red-500">
+                        </div>
+                        <select id="filterKecamatan" class="px-3 py-2 bg-white border border-slate-300 rounded-lg text-xs focus:ring-1 focus:ring-red-500">
+                            <option value="">Semua Kecamatan</option>
+                            <option value="gajahmungkur">Gajahmungkur</option>
+                            <option value="banyumanik">Banyumanik</option>
+                            <option value="gunungpati">Gunungpati</option>
+                        </select>
+                    </div>
+
+                    <!-- TABLE ELEMENT -->
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-slate-50 text-slate-400 text-[10px] font-bold uppercase tracking-wider border-b border-slate-200">
+                                    <th class="py-3 px-4 text-center w-12">No</th>
+                                    <th class="py-3 px-4">Usulan / Masalah</th>
+                                    <th class="py-3 px-4">Alamat Wilayah</th>
+                                    <th class="py-3 px-4 text-center">Volume</th>
+                                    <th class="py-3 px-4">Kontak / Anggaran</th>
+                                    <th class="py-3 px-4 text-center">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="pokirTableBody" class="divide-y divide-slate-100 text-xs">
+                                <!-- Dynamic rows go here -->
+                            </tbody>
+                        </table>
+                        <div id="emptyState" class="py-12 text-center text-slate-400 flex flex-col items-center justify-center space-y-2 hidden">
+                            <i data-lucide="database" class="w-12 h-12 text-slate-300"></i>
+                            <p class="text-sm font-medium">Belum ada usulan warga yang terdaftar.</p>
+                            <p class="text-xs">Silakan isi formulir di sebelah kiri untuk menambahkan aspirasi baru.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-400 py-6 mt-12 border-t border-slate-800 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div>
+                <p class="font-semibold text-slate-200">Portal Aspirasi Rakyat Mandiri</p>
+                <p class="mt-1">Dibuat sesuai spesifikasi dan struktur instrumen Pokok Pikiran DPRD Kota Semarang.</p>
+            </div>
+            <div class="flex items-center space-x-1 text-slate-500">
+                <span>Made for DPRD Kota Semarang</span>
+                <span>•</span>
+                <span>Yosi Yonardo GRP (Fraksi PDIP)</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS LOGIC -->
+    <script>
+        // Database Kelurahan Berdasarkan Kecamatan
+        const kelurahanData = {
+            gajahmungkur: [
+                "Bendungan",
+                "Gajahmungkur",
+                "Karangrejo",
+                "Lempongsari",
+                "Petompon",
+                "Sampangan",
+                "Bendanduwur",
+                "Bendan Ngisor"
+            ],
+            banyumanik: [
+                "Banyumanik",
+                "Gedawang",
+                "Jabungan",
+                "Ngesrep",
+                "Padangsari",
+                "Pedalangan",
+                "Pudakpayung",
+                "Srondol Kulon",
+                "Srondol Wetan",
+                "Sumurboto",
+                "Tinjomoyo"
+            ],
+            gunungpati: [
+                "Gunungpati",
+                "Kalisegoro",
+                "Kandri",
+                "Mangunsari",
+                "Nongkosawit",
+                "Pakintelan",
+                "Patemon",
+                "Plalangan",
+                "Pongangan",
+                "Sadeng",
+                "Sekaran",
+                "Sukorejo",
+                "Sumurejo",
+                "Cepoko",
+                "Jatirejo"
+            ]
+        };
+
+        // MOCK DATA AWAL (Diselaraskan lintas kecamatan & tanpa tahun)
+        const initialMockData = [
+            {
+                usulan: "pengaspalan",
+                permasalahan: "rusak",
+                jalan: "Karangrejo timur",
+                rt: "2",
+                rw: "1",
+                kel: "karangrejo",
+                kec: "gajahmungkur",
+                volumeLebar: "2,5 m",
+                volumePanjang: "50 m",
+                volumeGlobal: "",
+                telp: "085640199426",
+                anggaran: "",
+                ket: ""
+            },
+            {
+                usulan: "pembangunan balai rt",
+                permasalahan: "permohonan dana",
+                jalan: "Lempongsari 1",
+                rt: "4",
+                rw: "3",
+                kel: "lempongsari",
+                kec: "gajahmungkur",
+                volumeLebar: "",
+                volumePanjang: "",
+                volumeGlobal: "160 m³",
+                telp: "081353433100",
+                anggaran: "kekurangan dana Rp. 17.000.000",
+                ket: ""
+            },
+            {
+                usulan: "Talud",
+                permasalahan: "Longsor",
+                jalan: "Jl. Ngaglik Lama",
+                rt: "3",
+                rw:
