@@ -9,7 +9,7 @@
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700&display=swap');
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
         }
@@ -26,7 +26,7 @@
                 </div>
                 <div>
                     <h1 class="text-lg font-bold leading-none">E-POKIR MANDIRI</h1>
-                    <span class="text-xs text-red-200">Yosi Yonardo</span>
+                    <span class="text-xs text-red-200">DPRD Pengusul: Yosi Yonardo GRP, S.E., M.Sos</span>
                 </div>
             </div>
             <div class="hidden md:flex items-center space-x-2 text-sm bg-red-800 px-3 py-1.5 rounded-full text-red-100">
@@ -46,7 +46,7 @@
                 <span class="bg-red-500/30 text-red-100 text-xs font-semibold px-2.5 py-1 rounded-full uppercase tracking-wider">Aspirasi Rakyat</span>
                 <h2 class="text-2xl md:text-4xl font-extrabold mt-3 mb-2">Sampaikan Pokok Pikiran Anda Secara Langsung</h2>
                 <p class="text-red-100 text-sm md:text-base leading-relaxed">
-                    Portal ini didesain khusus berdasarkan format resmi Pokir DPRD Kota Semarang. Isi formulir di bawah ini dengan lengkap untuk mendaftarkan usulan pembangunan di wilayah RT/RW Anda.
+                    Portal ini didesain khusus berdasarkan format resmi Pokir DPRD Kota Semarang. Isi formulir di bawah ini dengan lengkap untuk mengirimkan usulan pembangunan di wilayah Anda langsung ke database Google Sheets kami.
                 </p>
                 <div class="mt-6 flex flex-wrap gap-4 text-xs font-medium text-red-100">
                     <div class="flex items-center gap-1.5 bg-black/15 px-3 py-1.5 rounded-lg">
@@ -58,6 +58,23 @@
                         <span>Fraksi PDI Perjuangan (Komisi B)</span>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- INTEGRATION STATUS BANNER -->
+        <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs">
+            <div class="flex items-center gap-3">
+                <div class="bg-blue-100 p-2 rounded-lg text-blue-700">
+                    <i data-lucide="database" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-blue-800">Status Integrasi Google Sheets</h4>
+                    <p id="integrationStatusText" class="text-blue-600 mt-0.5">Belum terhubung. Masukkan URL Web App Google Apps Script Anda untuk mengaktifkan penyimpanan otomatis.</p>
+                </div>
+            </div>
+            <div class="w-full sm:w-auto flex items-center gap-2">
+                <input type="text" id="scriptUrlInput" placeholder="https://script.google.com/macros/s/.../exec" class="w-full sm:w-80 px-3 py-2 bg-white border border-slate-300 rounded-lg text-xs focus:ring-1 focus:ring-red-500">
+                <button id="btnSaveUrl" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded-lg transition-all shrink-0">Simpan URL</button>
             </div>
         </div>
 
@@ -177,9 +194,9 @@
                         </div>
 
                         <!-- TOMBOL SUBMIT -->
-                        <button type="submit" class="w-full bg-red-700 hover:bg-red-800 text-white font-bold py-3 px-4 rounded-xl shadow-md transition-all flex items-center justify-center space-x-2">
+                        <button type="submit" id="btnSubmitForm" class="w-full bg-red-700 hover:bg-red-800 text-white font-bold py-3 px-4 rounded-xl shadow-md transition-all flex items-center justify-center space-x-2">
                             <i data-lucide="plus-circle" class="w-5 h-5"></i>
-                            <span>Tambahkan Usulan Pokir</span>
+                            <span id="submitBtnText">Kirim Usulan Pokir</span>
                         </button>
                     </form>
                 </div>
@@ -226,7 +243,7 @@
                             <h3 class="text-lg font-bold text-slate-800 flex items-center gap-2">
                                 <i data-lucide="table-properties" class="text-red-700"></i> Daftar Usulan Warga
                             </h3>
-                            <p class="text-xs text-slate-400">Data tersimpan lokal di browser Anda. Anda dapat mengunduh data dalam bentuk CSV kapan saja.</p>
+                            <p class="text-xs text-slate-400">Data ini tersimpan sementara di browser Anda dan dikirim otomatis ke Google Sheets apabila URL Apps Script aktif.</p>
                         </div>
                         
                         <!-- ACTIONS -->
@@ -237,7 +254,7 @@
                             </button>
                             <button id="btnReset" class="bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-800 text-xs font-semibold py-2 px-3 rounded-lg transition-all flex items-center gap-1.5">
                                 <i data-lucide="trash-2" class="w-4 h-4"></i>
-                                <span>Reset Data</span>
+                                <span>Reset Lokal</span>
                             </button>
                         </div>
                     </div>
@@ -345,7 +362,7 @@
             ]
         };
 
-        // MOCK DATA AWAL (Diselaraskan lintas kecamatan & tanpa tahun)
+        // MOCK DATA AWAL
         const initialMockData = [
             {
                 usulan: "pengaspalan",
@@ -353,7 +370,7 @@
                 jalan: "Karangrejo timur",
                 rt: "2",
                 rw: "1",
-                kel: "karangrejo",
+                kel: "Karangrejo",
                 kec: "gajahmungkur",
                 volumeLebar: "2,5 m",
                 volumePanjang: "50 m",
@@ -368,7 +385,7 @@
                 jalan: "Lempongsari 1",
                 rt: "4",
                 rw: "3",
-                kel: "lempongsari",
+                kel: "Lempongsari",
                 kec: "gajahmungkur",
                 volumeLebar: "",
                 volumePanjang: "",
@@ -382,4 +399,398 @@
                 permasalahan: "Longsor",
                 jalan: "Jl. Ngaglik Lama",
                 rt: "3",
-                rw:
+                rw: "1",
+                kel: "Bendungan",
+                kec: "gajahmungkur",
+                volumeLebar: "4m",
+                volumePanjang: "2m",
+                volumeGlobal: "",
+                telp: "085878117090",
+                anggaran: "",
+                ket: ""
+            },
+            {
+                usulan: "pembangunan taman",
+                permasalahan: "kurang penghijauan",
+                jalan: "Jl. Grafika, Padangsari",
+                rt: "5",
+                rw: "2",
+                kel: "Padangsari",
+                kec: "banyumanik",
+                volumeLebar: "15 m",
+                volumePanjang: "30 m",
+                volumeGlobal: "",
+                telp: "081234567890",
+                anggaran: "",
+                ket: "Taman bermain ramah anak"
+            },
+            {
+                usulan: "Penerangan Jalan Umum (PJU)",
+                permasalahan: "jalan gelap gulita saat malam",
+                jalan: "Jl. Sekaran Raya",
+                rt: "1",
+                rw: "5",
+                kel: "Sekaran",
+                kec: "gunungpati",
+                volumeLebar: "",
+                volumePanjang: "",
+                volumeGlobal: "10 titik",
+                telp: "087788990011",
+                anggaran: "kekurangan dana Rp. 12.000.000",
+                ket: "Tiang lampu tipe LED hemat energi"
+            }
+        ];
+
+        // State Management
+        let pokirList = [];
+        
+        // TEMPELKAN URL GOOGLE APPS SCRIPT (Web App) ANDA DI BAWAH INI jika ingin permanen:
+        // Contoh: let scriptUrl = "https://script.google.com/macros/s/AKfycb...xxx/exec";
+        let scriptUrl = "https://script.google.com/macros/s/AKfycbzpEjCIZPiauf0V3VpEgPqKFlGqCEwRPsgEn4PpZ8JoD3h5uXv-9xMcwvV71x2mshE9Kw/exec";
+
+        // Fungsi Memperbarui Opsi Kelurahan berdasarkan Kecamatan yang dipilih
+        function updateKelurahanDropdown(selectedKec) {
+            const kelSelect = document.getElementById('kelurahan');
+            kelSelect.innerHTML = '<option value="" disabled selected>Pilih Kelurahan</option>';
+            
+            if (selectedKec && kelurahanData[selectedKec]) {
+                kelSelect.removeAttribute('disabled');
+                kelSelect.className = "w-full px-2 py-2 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all cursor-pointer";
+                
+                kelurahanData[selectedKec].forEach(kel => {
+                    const opt = document.createElement('option');
+                    opt.value = kel;
+                    opt.textContent = kel;
+                    kelSelect.appendChild(opt);
+                });
+            } else {
+                kelSelect.setAttribute('disabled', 'true');
+                kelSelect.className = "w-full px-2 py-2 bg-slate-100 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all cursor-not-allowed";
+            }
+        }
+
+        // Event Listener Kecamatan (Deteksi Perubahan Langsung)
+        document.getElementById('kecamatan').addEventListener('change', function() {
+            updateKelurahanDropdown(this.value.toLowerCase().trim());
+        });
+
+        // Inisialisasi Database Lokal / localStorage & Google Sheets URL
+        function initApp() {
+            // Muat API URL (Prioritaskan URL yang di-hardcode dalam kode di atas)
+            if (scriptUrl !== "") {
+                document.getElementById('scriptUrlInput').value = scriptUrl;
+                document.getElementById('integrationStatusText').innerHTML = '<span class="text-green-700 font-bold">Terintegrasi (Permanen via Code).</span> Setiap usulan baru akan langsung dikirim ke Google Sheets Anda.';
+            } else {
+                const savedUrl = localStorage.getItem('pokir_sheet_url');
+                if (savedUrl) {
+                    scriptUrl = savedUrl;
+                    document.getElementById('scriptUrlInput').value = savedUrl;
+                    document.getElementById('integrationStatusText').innerHTML = '<span class="text-green-700 font-bold">Terintegrasi (Lokal Browser).</span> Setiap usulan baru akan langsung dikirim ke Google Sheets Anda.';
+                }
+            }
+
+            // Muat Data Tabel
+            const stored = localStorage.getItem('pokir_data');
+            if (stored) {
+                pokirList = JSON.parse(stored);
+            } else {
+                pokirList = [...initialMockData];
+                saveToLocalStorage();
+            }
+            renderTable();
+            updateStats();
+            lucide.createIcons();
+        }
+
+        function saveToLocalStorage() {
+            localStorage.setItem('pokir_data', JSON.stringify(pokirList));
+        }
+
+        // Menyimpan URL Google Sheets Apps Script secara manual via Form Atas
+        document.getElementById('btnSaveUrl').addEventListener('click', function() {
+            const inputVal = document.getElementById('scriptUrlInput').value.trim();
+            if (inputVal === "") {
+                localStorage.removeItem('pokir_sheet_url');
+                scriptUrl = "";
+                document.getElementById('integrationStatusText').innerHTML = "Belum terhubung. Masukkan URL Web App Google Apps Script Anda untuk mengaktifkan penyimpanan otomatis.";
+                alert("URL dihapus. Aplikasi kembali berjalan dalam mode lokal murni.");
+            } else if (inputVal.startsWith("https://script.google.com/")) {
+                localStorage.setItem('pokir_sheet_url', inputVal);
+                scriptUrl = inputVal;
+                document.getElementById('integrationStatusText').innerHTML = '<span class="text-green-700 font-bold">Terintegrasi.</span> Setiap usulan baru akan langsung dikirim ke Google Sheets Anda.';
+                alert("URL Google Apps Script berhasil disimpan dan terintegrasi!");
+            } else {
+                alert("Format URL tidak valid! Harap masukkan URL Web App Google Apps Script yang benar.");
+            }
+        });
+
+        // Render data ke dalam tabel secara dinamis
+        function renderTable() {
+            const tableBody = document.getElementById('pokirTableBody');
+            const emptyState = document.getElementById('emptyState');
+            const searchQuery = document.getElementById('searchInput').value.toLowerCase();
+            const filterKec = document.getElementById('filterKecamatan').value.toLowerCase();
+            
+            tableBody.innerHTML = '';
+            
+            // Lakukan pemfilteran data
+            const filteredList = pokirList.filter((item) => {
+                const textMatch = 
+                    item.usulan.toLowerCase().includes(searchQuery) ||
+                    item.permasalahan.toLowerCase().includes(searchQuery) ||
+                    item.jalan.toLowerCase().includes(searchQuery) ||
+                    item.kel.toLowerCase().includes(searchQuery) ||
+                    item.kec.toLowerCase().includes(searchQuery);
+                
+                const kecMatch = filterKec === "" || item.kec.toLowerCase() === filterKec;
+                
+                return textMatch && kecMatch;
+            });
+
+            if (filteredList.length === 0) {
+                emptyState.classList.remove('hidden');
+            } else {
+                emptyState.classList.add('hidden');
+                
+                filteredList.forEach((item, index) => {
+                    const row = document.createElement('tr');
+                    row.className = "hover:bg-slate-50/70 transition-all border-b border-slate-100";
+                    
+                    // Format tampilan volume
+                    let volDisplay = '-';
+                    if (item.volumeLebar && item.volumePanjang) {
+                        volDisplay = `${item.volumeLebar} x ${item.volumePanjang}`;
+                    } else if (item.volumeGlobal) {
+                        volDisplay = item.volumeGlobal;
+                    } else if (item.volumeLebar || item.volumePanjang) {
+                        volDisplay = item.volumeLebar || item.volumePanjang;
+                    }
+
+                    // Format nomor telepon agar cantik
+                    const formattedPhone = item.telp.startsWith('0') ? item.telp : '0' + item.telp.replace(/^62/, '');
+
+                    row.innerHTML = `
+                        <td class="py-3 px-4 text-center font-bold text-slate-400">${index + 1}</td>
+                        <td class="py-3 px-4">
+                            <div class="font-bold text-slate-800 capitalize">${item.usulan}</div>
+                            <div class="text-slate-500 text-[11px] mt-0.5"><span class="font-medium text-slate-600">Masalah:</span> ${item.permasalahan}</div>
+                        </td>
+                        <td class="py-3 px-4">
+                            <div class="text-slate-800 font-medium">${item.jalan}</div>
+                            <div class="text-slate-400 text-[10px] mt-0.5">RT ${item.rt} / RW ${item.rw} • Kel. <span class="capitalize font-semibold text-slate-500">${item.kel}</span>, Kec. <span class="uppercase font-semibold text-red-600">${item.kec}</span></div>
+                        </td>
+                        <td class="py-3 px-4 text-center font-medium text-slate-600">${volDisplay}</td>
+                        <td class="py-3 px-4">
+                            <div class="flex items-center gap-1 text-slate-600">
+                                <i data-lucide="phone" class="w-3.5 h-3.5 text-green-600"></i>
+                                <span>${formattedPhone}</span>
+                            </div>
+                            <div class="text-amber-700 font-semibold text-[11px] mt-0.5">${item.anggaran || '-'}</div>
+                            ${item.ket ? `<div class="text-slate-400 text-[10px] italic mt-0.5">Ket: ${item.ket}</div>` : ''}
+                        </td>
+                        <td class="py-3 px-4 text-center">
+                            <button onclick="deleteItem(${index})" class="text-slate-400 hover:text-red-600 p-1.5 rounded-lg hover:bg-red-50 transition-all" title="Hapus Usulan">
+                                <i data-lucide="trash-2" class="w-4 h-4"></i>
+                            </button>
+                        </td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            }
+            lucide.createIcons();
+        }
+
+        // Kalkulasi Statistik Kecil
+        function updateStats() {
+            document.getElementById('statTotal').innerText = pokirList.length;
+            
+            if (pokirList.length === 0) {
+                document.getElementById('statKelurahan').innerText = '-';
+                document.getElementById('statKecamatan').innerText = '-';
+                return;
+            }
+
+            // Cari Kelurahan & Kecamatan Teraktif
+            const kelCounts = {};
+            const kecCounts = {};
+            pokirList.forEach(item => {
+                const kel = item.kel.trim().toLowerCase();
+                kelCounts[kel] = (kelCounts[kel] || 0) + 1;
+
+                const kec = item.kec.trim().toLowerCase();
+                kecCounts[kec] = (kecCounts[kec] || 0) + 1;
+            });
+
+            const topKel = Object.keys(kelCounts).reduce((a, b) => kelCounts[a] > kelCounts[b] ? a : b);
+            const topKec = Object.keys(kecCounts).reduce((a, b) => kecCounts[a] > kecCounts[b] ? a : b);
+
+            document.getElementById('statKelurahan').innerText = topKel;
+            document.getElementById('statKelurahan').className = "text-sm font-bold text-slate-800 capitalize truncate block max-w-[120px]";
+            document.getElementById('statKecamatan').innerText = topKec;
+            document.getElementById('statKecamatan').className = "text-sm font-bold text-slate-800 uppercase truncate block max-w-[120px]";
+        }
+
+        // Hapus Usulan Lokal
+        window.deleteItem = function(index) {
+            if(confirm("Apakah Anda yakin ingin menghapus usulan ini secara lokal? (Catatan: Ini tidak akan menghapus data yang sudah masuk ke Google Sheets)")) {
+                pokirList.splice(index, 1);
+                saveToLocalStorage();
+                renderTable();
+                updateStats();
+            }
+        }
+
+        // Event Form Submit (Menyimpan dan Mengirim ke Spreadsheet)
+        document.getElementById('pokirForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const btnSubmit = document.getElementById('btnSubmitForm');
+            const btnText = document.getElementById('submitBtnText');
+            
+            const rawPhone = document.getElementById('telp').value;
+            const processedPhone = '0' + rawPhone.replace(/\D/g, '').replace(/^0/, '').replace(/^62/, '');
+
+            const newPokir = {
+                usulan: document.getElementById('usulan').value,
+                permasalahan: document.getElementById('permasalahan').value,
+                jalan: document.getElementById('alamatJalan').value,
+                rt: document.getElementById('rt').value,
+                rw: document.getElementById('rw').value,
+                kel: document.getElementById('kelurahan').value,
+                kec: document.getElementById('kecamatan').value,
+                volumeLebar: document.getElementById('volumeLebar').value,
+                volumePanjang: document.getElementById('volumePanjang').value,
+                volumeGlobal: document.getElementById('volumeGlobal').value,
+                telp: processedPhone,
+                anggaran: document.getElementById('anggaran').value,
+                ket: document.getElementById('keterangan').value
+            };
+
+            // Nonaktifkan tombol untuk menghindari klik ganda
+            btnSubmit.setAttribute('disabled', 'true');
+            btnSubmit.classList.add('opacity-75', 'cursor-not-allowed');
+            btnText.innerText = 'Mengirim Data...';
+
+            let successMessage = "Usulan baru berhasil ditambahkan secara lokal.";
+
+            // Jika ada URL integrasi Google Sheets
+            if (scriptUrl) {
+                try {
+                    // Kirim ke Google Apps Script dengan header CORS yang sesuai
+                    const response = await fetch(scriptUrl, {
+                        method: 'POST',
+                        mode: 'no-cors', // Penting untuk mengirim tanpa hambatan CORS
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(newPokir)
+                    });
+                    
+                    successMessage = "Aspirasi Anda berhasil terkirim dan disimpan langsung di Google Sheets!";
+                } catch (error) {
+                    console.error("Gagal mengirim ke Google Sheets:", error);
+                    successMessage = "Data tersimpan lokal, namun gagal mengirim ke Google Sheets. Silakan periksa koneksi internet atau URL Apps Script Anda.";
+                }
+            }
+
+            // Tambahkan ke tabel lokal
+            pokirList.unshift(newPokir);
+            saveToLocalStorage();
+            renderTable();
+            updateStats();
+
+            // Aktifkan kembali tombol
+            btnSubmit.removeAttribute('disabled');
+            btnSubmit.classList.remove('opacity-75', 'cursor-not-allowed');
+            btnText.innerText = 'Kirim Usulan Pokir';
+
+            // Bersihkan form input
+            document.getElementById('pokirForm').reset();
+            
+            // Kunci kembali dropdown kelurahan setelah di-reset
+            const kelSelect = document.getElementById('kelurahan');
+            kelSelect.innerHTML = '<option value="" disabled selected>Pilih Kec. dulu</option>';
+            kelSelect.setAttribute('disabled', 'true');
+            kelSelect.className = "w-full px-2 py-2 bg-slate-100 border border-slate-300 rounded-lg text-sm transition-all cursor-not-allowed";
+
+            alert(successMessage);
+
+            // Scroll ke arah tabel di HP
+            if (window.innerWidth < 1024) {
+                document.getElementById('pokirTableBody').scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+
+        // Event Filter & Search
+        document.getElementById('searchInput').addEventListener('input', renderTable);
+        document.getElementById('filterKecamatan').addEventListener('change', renderTable);
+
+        // Reset Data Ke Awal
+        document.getElementById('btnReset').addEventListener('click', function() {
+            if (confirm("Apakah Anda yakin ingin menghapus data sementara di browser ini dan memuat ulang data percontohan?")) {
+                localStorage.removeItem('pokir_data');
+                initApp();
+            }
+        });
+
+        // Ekspor ke CSV
+        document.getElementById('btnExport').addEventListener('click', function() {
+            if (pokirList.length === 0) {
+                alert("Tidak ada data untuk diekspor!");
+                return;
+            }
+
+            let csvContent = "data:text/csv;charset=utf-8,";
+            csvContent += "TAMBAHAN USULAN\r\n";
+            csvContent += "POKOK-POKOK PIKIRAN (POKIR) DPRD KOTA SEMARANG\r\n";
+            csvContent += "APBD TAHUN ANGGARAN\r\n";
+            csvContent += "( USULAN SECARA OFF-LINE )\r\n\r\n";
+            csvContent += "FRAKSI,,: PDI PERJUANGAN,,,,KOMISI,,: B\r\n";
+            csvContent += "NAMA ANGGOTA DPRD,,\": YOSI YONARDO GRP, S.E., M.Sos\",,,,TELP./WA,,:\r\n\r\n";
+            csvContent += "NO,USULAN ,PERMASALAHAN,ALAMAT,,,,,VOLUME,,TELP./WA,ANGGARAN,KET.\r\n";
+            csvContent += ",,,JALAN,RT,RW,KEL,KEC\r\n";
+
+            pokirList.forEach((item, index) => {
+                const clean = (val) => {
+                    if (!val) return "";
+                    let v = val.toString().replace(/"/g, '""');
+                    if (v.includes(",") || v.includes("\n") || v.includes("\r")) {
+                        return `"${v}"`;
+                    }
+                    return v;
+                };
+
+                const usulan = clean(item.usulan);
+                const masalah = clean(item.permasalahan);
+                const jalan = clean(item.jalan);
+                const rt = clean(item.rt);
+                const rw = clean(item.rw);
+                const kel = clean(item.kel);
+                const kec = clean(item.kec);
+                
+                const volA = clean(item.volumeLebar || item.volumeGlobal);
+                const volB = clean(item.volumePanjang);
+
+                const telp = clean(item.telp);
+                const anggaran = clean(item.anggaran);
+                const ket = clean(item.ket);
+
+                csvContent += `${index + 1},${usulan},${masalah},${jalan},${rt},${rw},${kel},${kec},${volA},${volB},${telp},${anggaran},${ket}\r\n`;
+            });
+
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "POKIR_MANDIRI_KOTA_SEMARANG.csv");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+
+        // Jalankan Aplikasi saat DOM siap
+        window.onload = function() {
+            initApp();
+        };
+    </script>
+</body>
+</html>
