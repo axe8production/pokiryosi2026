@@ -9,312 +9,200 @@
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
 
-    <!-- HEADER / NAVIGATION -->
-    <header class="bg-red-700 text-white shadow-md sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+    <!-- HEADER -->
+    <header class="bg-red-700 text-white shadow-md">
+        <div class="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
             <div class="flex items-center space-x-3">
                 <div class="bg-white p-2 rounded-lg text-red-700">
                     <i data-lucide="vote" class="w-6 h-6"></i>
                 </div>
                 <div>
-                    <h1 class="text-lg font-bold leading-none">E-POKIR MANDIRI</h1>
-                    <span class="text-xs text-red-200">DPRD Pengusul: Yosi Yonardo GRP, S.E., M.Sos</span>
+                    <h1 class="text-base font-bold leading-none">E-POKIR MANDIRI</h1>
+                    <span class="text-[10px] text-red-200 uppercase tracking-wider">Portal Aspirasi Konstituen</span>
                 </div>
             </div>
-            <div class="hidden md:flex items-center space-x-2 text-sm bg-red-800 px-3 py-1.5 rounded-full text-red-100">
-                <span class="w-2.5 h-2.5 bg-green-400 rounded-full animate-pulse"></span>
-                <span>Portal Aspirasi Konstituen</span>
+            <div class="flex items-center space-x-2 text-xs bg-red-800 px-3 py-1.5 rounded-full text-red-100">
+                <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                <span class="font-medium">Formulir Warga</span>
             </div>
         </div>
     </header>
 
-    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow max-w-2xl mx-auto px-4 py-8 w-full">
         <!-- HEADER PENGUMUMAN -->
-        <div class="bg-gradient-to-r from-red-800 to-red-600 rounded-2xl p-6 md:p-8 text-white shadow-xl mb-8 relative overflow-hidden">
+        <div class="bg-gradient-to-r from-red-800 to-red-600 rounded-2xl p-6 text-white shadow-lg mb-6 relative overflow-hidden">
             <div class="absolute right-0 bottom-0 opacity-10 pointer-events-none transform translate-y-1/4 translate-x-1/4">
-                <i data-lucide="landmark" class="w-96 h-96"></i>
+                <i data-lucide="landmark" class="w-48 h-48"></i>
             </div>
-            <div class="relative z-10 max-w-3xl">
-                <span class="bg-red-500/30 text-red-100 text-xs font-semibold px-2.5 py-1 rounded-full uppercase tracking-wider">Aspirasi Rakyat</span>
-                <h2 class="text-2xl md:text-4xl font-extrabold mt-3 mb-2">Sampaikan Pokok Pikiran Anda Secara Langsung</h2>
-                <p class="text-red-100 text-sm md:text-base leading-relaxed">
-                    Portal ini didesain khusus berdasarkan format resmi Pokir DPRD Kota Semarang. Isi formulir di bawah ini dengan lengkap untuk mengirimkan usulan pembangunan di wilayah Anda langsung ke database Google Sheets kami.
+            <div class="relative z-10">
+                <span class="bg-red-500/30 text-red-100 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Aspirasi Rakyat</span>
+                <h2 class="text-xl md:text-2xl font-extrabold mt-2 mb-1">Kirim Usulan Pembangunan</h2>
+                <p class="text-red-100 text-xs md:text-sm leading-relaxed">
+                    Silakan isi formulir di bawah ini dengan lengkap untuk mengirimkan usulan pembangunan di wilayah Anda langsung ke tim aspirasi Bapak **Yosi Yonardo GRP, S.E., M.Sos** (DPRD Kota Semarang - Fraksi PDI Perjuangan).
                 </p>
-                <div class="mt-6 flex flex-wrap gap-4 text-xs font-medium text-red-100">
-                    <div class="flex items-center gap-1.5 bg-black/15 px-3 py-1.5 rounded-lg">
-                        <i data-lucide="user" class="w-4 h-4"></i>
-                        <span>DPRD Pengusul: Yosi Yonardo GRP, S.E., M.Sos</span>
-                    </div>
-                    <div class="flex items-center gap-1.5 bg-black/15 px-3 py-1.5 rounded-lg">
-                        <i data-lucide="layers" class="w-4 h-4"></i>
-                        <span>Fraksi PDI Perjuangan (Komisi B)</span>
-                    </div>
-                </div>
             </div>
         </div>
 
-        <!-- INTEGRATION STATUS BANNER -->
-        <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs">
-            <div class="flex items-center gap-3">
-                <div class="bg-blue-100 p-2 rounded-lg text-blue-700">
-                    <i data-lucide="database" class="w-5 h-5"></i>
+        <!-- FORM CARD -->
+        <div class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-4 mb-6">
+                <div class="flex items-center space-x-2">
+                    <i data-lucide="clipboard-edit" class="w-5 h-5 text-red-600"></i>
+                    <h3 class="text-base font-bold text-slate-800">Isi Data Usulan</h3>
                 </div>
+                <span class="text-xs text-red-500 font-semibold">* Wajib Diisi</span>
+            </div>
+
+            <form id="pokirForm" class="space-y-5">
+                <!-- KECAMATAN (Wajib dipilih duluan agar pilihan Kelurahan dinamis) -->
                 <div>
-                    <h4 class="font-bold text-blue-800">Status Integrasi Google Sheets</h4>
-                    <p id="integrationStatusText" class="text-blue-600 mt-0.5">Belum terhubung. Masukkan URL Web App Google Apps Script Anda untuk mengaktifkan penyimpanan otomatis.</p>
-                </div>
-            </div>
-            <div class="w-full sm:w-auto flex items-center gap-2">
-                <input type="text" id="scriptUrlInput" placeholder="https://script.google.com/macros/s/.../exec" class="w-full sm:w-80 px-3 py-2 bg-white border border-slate-300 rounded-lg text-xs focus:ring-1 focus:ring-red-500">
-                <button id="btnSaveUrl" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded-lg transition-all shrink-0">Simpan URL</button>
-            </div>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            <!-- FORM INPUT (LEFT / 5 COLS) -->
-            <div class="lg:col-span-5 space-y-6">
-                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
-                    <div class="flex items-center justify-between border-b border-slate-100 pb-4 mb-6">
-                        <div class="flex items-center space-x-2">
-                            <i data-lucide="clipboard-edit" class="w-5 h-5 text-red-600"></i>
-                            <h3 class="text-lg font-bold text-slate-800">Formulir Usulan Baru</h3>
-                        </div>
-                        <span class="text-xs text-slate-400 font-mono">* Wajib Diisi</span>
-                    </div>
-
-                    <form id="pokirForm" class="space-y-4">
-                        <!-- USULAN -->
-                        <div>
-                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Jenis Usulan *</label>
-                            <select id="usulan" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all">
-                                <option value="" disabled selected>Pilih Jenis Usulan</option>
-                                <option value="pengaspalan">Pengaspalan Jalan</option>
-                                <option value="pembangunan balai rt">Pembangunan Balai RT</option>
-                                <option value="pembangunan balai rw">Pembangunan Balai RW</option>
-                                <option value="Rehabilitasi Balai Pertemuan">Rehabilitasi Balai Pertemuan</option>
-                                <option value="Talud">Talud / Penahan Longsor</option>
-                                <option value="Pembangunan Taman">Pembangunan Taman / Ruang Terbuka</option>
-                                <option value="Perbaikan Saluran Air/Selokan">Perbaikan Saluran Air / Selokan</option>
-                                <option value="Penerangan Jalan Umum (PJU)">Penerangan Jalan Umum (PJU)</option>
-                                <option value="Lainnya">Lainnya (Tulis di Keterangan)</option>
-                            </select>
-                        </div>
-
-                        <!-- PERMASALAHAN -->
-                        <div>
-                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Permasalahan *</label>
-                            <input type="text" id="permasalahan" required placeholder="Contoh: Jalan rusak/mengelupas, rawan longsor, dsb." class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all">
-                        </div>
-
-                        <!-- ALAMAT JALAN -->
-                        <div>
-                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Alamat (Nama Jalan/Blok) *</label>
-                            <input type="text" id="alamatJalan" required placeholder="Contoh: Jl. Karangrejo Timur No. 12" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all">
-                        </div>
-
-                        <!-- KECAMATAN -->
-                        <div>
-                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Kecamatan *</label>
-                            <select id="kecamatan" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all uppercase">
-                                <option value="" disabled selected>Pilih Kecamatan</option>
-                                <option value="gajahmungkur">Gajahmungkur</option>
-                                <option value="banyumanik">Banyumanik</option>
-                                <option value="gunungpati">Gunungpati</option>
-                            </select>
-                        </div>
-
-                        <!-- GRID RT, RW, KELURAHAN -->
-                        <div class="grid grid-cols-3 gap-3">
-                            <div>
-                                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">RT *</label>
-                                <input type="number" id="rt" required min="1" placeholder="00" class="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all text-center">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">RW *</label>
-                                <input type="number" id="rw" required min="1" placeholder="00" class="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all text-center">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Kelurahan *</label>
-                                <select id="kelurahan" required disabled class="w-full px-2 py-2 bg-slate-100 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all cursor-not-allowed">
-                                    <option value="" disabled selected>Pilih Kec. dulu</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <!-- SPESIFIKASI VOLUME -->
-                        <div class="border border-slate-200 rounded-xl p-4 bg-slate-50/50 space-y-3">
-                            <span class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1 flex items-center gap-1">
-                                <i data-lucide="scaling" class="w-4 h-4 text-slate-500"></i> Spesifikasi Volume
-                            </span>
-                            
-                            <div class="grid grid-cols-2 gap-3">
-                                <div>
-                                    <label class="block text-xs text-slate-600 mb-1">Lebar / Dimensi A</label>
-                                    <input type="text" id="volumeLebar" placeholder="Contoh: 3 m" class="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all">
-                                </div>
-                                <div>
-                                    <label class="block text-xs text-slate-600 mb-1">Panjang / Dimensi B</label>
-                                    <input type="text" id="volumePanjang" placeholder="Contoh: 100 m" class="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all">
-                                </div>
-                            </div>
-                            <div>
-                                <label class="block text-xs text-slate-600 mb-1">Volume Global / Lainnya (Alternatif)</label>
-                                <input type="text" id="volumeGlobal" placeholder="Contoh: 160 m³ atau 840,5 m²" class="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all">
-                                <span class="text-[10px] text-slate-400 block mt-0.5">Gunakan jika usulan berupa bangunan atau volume luas secara keseluruhan.</span>
-                            </div>
-                        </div>
-
-                        <!-- KONTAK / WA -->
-                        <div>
-                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">No. Telp / WhatsApp *</label>
-                            <div class="relative">
-                                <span class="absolute left-3 top-2.5 text-slate-400 text-sm font-semibold">+62</span>
-                                <input type="tel" id="telp" required placeholder="85xxxxxxxxxx" class="w-full pl-12 pr-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all">
-                            </div>
-                        </div>
-
-                        <!-- ANGGARAN -->
-                        <div>
-                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Estimasi Anggaran / Kekurangan Dana (Opsional)</label>
-                            <input type="text" id="anggaran" placeholder="Contoh: kekurangan dana Rp. 15.000.000" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all">
-                        </div>
-
-                        <!-- KETERANGAN TAMBAHAN -->
-                        <div>
-                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Keterangan Tambahan / Detail Spesifik</label>
-                            <textarea id="keterangan" rows="2" placeholder="Contoh: Keramik bermotif kasar tidak licin, aspal di tanjakan curam." class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all"></textarea>
-                        </div>
-
-                        <!-- TOMBOL SUBMIT -->
-                        <button type="submit" id="btnSubmitForm" class="w-full bg-red-700 hover:bg-red-800 text-white font-bold py-3 px-4 rounded-xl shadow-md transition-all flex items-center justify-center space-x-2">
-                            <i data-lucide="plus-circle" class="w-5 h-5"></i>
-                            <span id="submitBtnText">Kirim Usulan Pokir</span>
-                        </button>
-                    </form>
-                </div>
-            </div>
-
-            <!-- TABLE VIEW & CONTROLS (RIGHT / 7 COLS) -->
-            <div class="lg:col-span-7 space-y-6">
-                <!-- STATS & ACTIONS -->
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-200 flex items-center space-x-3">
-                        <div class="bg-red-100 p-2.5 rounded-xl text-red-700">
-                            <i data-lucide="file-text" class="w-6 h-6"></i>
-                        </div>
-                        <div>
-                            <span class="text-xs text-slate-400 block font-medium">Total Usulan</span>
-                            <span id="statTotal" class="text-2xl font-bold text-slate-800">0</span>
-                        </div>
-                    </div>
-                    <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-200 flex items-center space-x-3">
-                        <div class="bg-amber-100 p-2.5 rounded-xl text-amber-700">
-                            <i data-lucide="map-pin" class="w-6 h-6"></i>
-                        </div>
-                        <div>
-                            <span class="text-xs text-slate-400 block font-medium">Kelurahan Terbanyak</span>
-                            <span id="statKelurahan" class="text-sm font-bold text-slate-800 truncate block max-w-[120px]">-</span>
-                        </div>
-                    </div>
-                    <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-200 flex items-center space-x-3">
-                        <div class="bg-blue-100 p-2.5 rounded-xl text-blue-700">
-                            <i data-lucide="layers" class="w-6 h-6"></i>
-                        </div>
-                        <div>
-                            <span class="text-xs text-slate-400 block font-medium">Kecamatan Terbanyak</span>
-                            <span id="statKecamatan" class="text-sm font-bold text-slate-800 truncate block max-w-[120px]">-</span>
-                        </div>
-                    </div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Kecamatan *</label>
+                    <select id="kecamatan" required class="w-full px-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all uppercase font-medium">
+                        <option value="" disabled selected>Pilih Kecamatan Anda</option>
+                        <option value="gajahmungkur">Gajahmungkur</option>
+                        <option value="banyumanik">Banyumanik</option>
+                        <option value="gunungpati">Gunungpati</option>
+                    </select>
                 </div>
 
-                <!-- TABLE CARD -->
-                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col">
-                    <!-- TABLE HEADER ACTIONS -->
-                    <div class="p-6 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                        <div class="space-y-1">
-                            <h3 class="text-lg font-bold text-slate-800 flex items-center gap-2">
-                                <i data-lucide="table-properties" class="text-red-700"></i> Daftar Usulan Warga
-                            </h3>
-                            <p class="text-xs text-slate-400">Data ini tersimpan sementara di browser Anda dan dikirim otomatis ke Google Sheets apabila URL Apps Script aktif.</p>
-                        </div>
-                        
-                        <!-- ACTIONS -->
-                        <div class="flex flex-wrap items-center gap-2">
-                            <button id="btnExport" class="bg-green-600 hover:bg-green-700 text-white text-xs font-semibold py-2 px-3.5 rounded-lg shadow-sm transition-all flex items-center gap-1.5">
-                                <i data-lucide="download" class="w-4 h-4"></i>
-                                <span>Ekspor ke CSV</span>
-                            </button>
-                            <button id="btnReset" class="bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-800 text-xs font-semibold py-2 px-3 rounded-lg transition-all flex items-center gap-1.5">
-                                <i data-lucide="trash-2" class="w-4 h-4"></i>
-                                <span>Reset Lokal</span>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- SEARCH & FILTER -->
-                    <div class="px-6 py-4 bg-slate-50/50 border-b border-slate-100 flex flex-col sm:flex-row gap-3">
-                        <div class="relative flex-grow">
-                            <i data-lucide="search" class="absolute left-3 top-2.5 w-4.5 h-4.5 text-slate-400"></i>
-                            <input type="text" id="searchInput" placeholder="Cari usulan, permasalahan, jalan, kelurahan, atau kecamatan..." class="w-full pl-10 pr-4 py-2 bg-white border border-slate-300 rounded-lg text-xs focus:ring-1 focus:ring-red-500 focus:border-red-500">
-                        </div>
-                        <select id="filterKecamatan" class="px-3 py-2 bg-white border border-slate-300 rounded-lg text-xs focus:ring-1 focus:ring-red-500">
-                            <option value="">Semua Kecamatan</option>
-                            <option value="gajahmungkur">Gajahmungkur</option>
-                            <option value="banyumanik">Banyumanik</option>
-                            <option value="gunungpati">Gunungpati</option>
+                <!-- GRID RT, RW, KELURAHAN -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Kelurahan *</label>
+                        <select id="kelurahan" required disabled class="w-full px-3 py-3 bg-slate-100 border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all cursor-not-allowed">
+                            <option value="" disabled selected>Pilih Kec. dahulu</option>
                         </select>
                     </div>
-
-                    <!-- TABLE ELEMENT -->
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-left border-collapse">
-                            <thead>
-                                <tr class="bg-slate-50 text-slate-400 text-[10px] font-bold uppercase tracking-wider border-b border-slate-200">
-                                    <th class="py-3 px-4 text-center w-12">No</th>
-                                    <th class="py-3 px-4">Usulan / Masalah</th>
-                                    <th class="py-3 px-4">Alamat Wilayah</th>
-                                    <th class="py-3 px-4 text-center">Volume</th>
-                                    <th class="py-3 px-4">Kontak / Anggaran</th>
-                                    <th class="py-3 px-4 text-center">Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody id="pokirTableBody" class="divide-y divide-slate-100 text-xs">
-                                <!-- Dynamic rows go here -->
-                            </tbody>
-                        </table>
-                        <div id="emptyState" class="py-12 text-center text-slate-400 flex flex-col items-center justify-center space-y-2 hidden">
-                            <i data-lucide="database" class="w-12 h-12 text-slate-300"></i>
-                            <p class="text-sm font-medium">Belum ada usulan warga yang terdaftar.</p>
-                            <p class="text-xs">Silakan isi formulir di sebelah kiri untuk menambahkan aspirasi baru.</p>
-                        </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">RT *</label>
+                        <input type="number" id="rt" required min="1" placeholder="Contoh: 3" class="w-full px-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all text-center font-bold">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">RW *</label>
+                        <input type="number" id="rw" required min="1" placeholder="Contoh: 2" class="w-full px-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all text-center font-bold">
                     </div>
                 </div>
-            </div>
+
+                <!-- ALAMAT JALAN -->
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Alamat (Nama Jalan / Gang / Blok) *</label>
+                    <input type="text" id="alamatJalan" required placeholder="Contoh: Jl. Karangrejo Timur III No. 12" class="w-full px-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all">
+                </div>
+
+                <!-- USULAN -->
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Jenis Usulan *</label>
+                    <select id="usulan" required class="w-full px-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all font-medium">
+                        <option value="" disabled selected>Pilih Jenis Usulan</option>
+                        <option value="pengaspalan">Pengaspalan Jalan</option>
+                        <option value="pembangunan balai rt">Pembangunan Balai RT</option>
+                        <option value="pembangunan balai rw">Pembangunan Balai RW</option>
+                        <option value="Rehabilitasi Balai Pertemuan">Rehabilitasi Balai Pertemuan</option>
+                        <option value="Talud">Talud / Penahan Longsor</option>
+                        <option value="Pembangunan Taman">Pembangunan Taman / Ruang Terbuka</option>
+                        <option value="Perbaikan Saluran Air/Selokan">Perbaikan Saluran Air / Selokan</option>
+                        <option value="Penerangan Jalan Umum (PJU)">Penerangan Jalan Umum (PJU)</option>
+                        <option value="lainnya">Usulan Lainnya (Tulis Sendiri)</option>
+                    </select>
+                </div>
+
+                <!-- INPUT TEXT DINAMIS UNTUK "USULAN LAINNYA" (Hanya muncul jika dipilih) -->
+                <div id="usulanLainnyaContainer" class="hidden bg-red-50 border border-red-200 rounded-xl p-4 transition-all">
+                    <label class="block text-xs font-bold text-red-800 uppercase tracking-wider mb-1.5">Tuliskan Jenis Usulan Anda *</label>
+                    <input type="text" id="usulanLainnyaInput" placeholder="Contoh: Pemasangan CCTV Warga / Cermin Tikungan" class="w-full px-4 py-3 bg-white border border-red-300 rounded-xl text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all font-semibold">
+                </div>
+
+                <!-- PERMASALAHAN -->
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Permasalahan / Alasan Pengajuan *</label>
+                    <input type="text" id="permasalahan" required placeholder="Contoh: Jalan aspal rusak berlubang / tebing rawan longsor" class="w-full px-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all">
+                </div>
+
+                <!-- SPESIFIKASI VOLUME -->
+                <div class="border border-slate-200 rounded-2xl p-4 bg-slate-50 space-y-3">
+                    <span class="block text-xs font-bold text-slate-600 uppercase tracking-wider flex items-center gap-1">
+                        <i data-lucide="scaling" class="w-4 h-4 text-slate-500"></i> Spesifikasi Ukuran / Volume
+                    </span>
+                    
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-xs text-slate-600 mb-1">Lebar / Dimensi A</label>
+                            <input type="text" id="volumeLebar" placeholder="Contoh: 3 m" class="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-xs text-slate-600 mb-1">Panjang / Dimensi B</label>
+                            <input type="text" id="volumePanjang" placeholder="Contoh: 100 m" class="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs text-slate-600 mb-1">Atau Gunakan Ukuran Global (Pilih Salah Satu)</label>
+                        <input type="text" id="volumeGlobal" placeholder="Contoh: Luas 150 m² atau Gedung 1 Unit" class="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all">
+                    </div>
+                </div>
+
+                <!-- KONTAK / WA -->
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">No. Telp / WhatsApp Pengisi *</label>
+                    <div class="relative">
+                        <span class="absolute left-4 top-3 text-slate-400 text-sm font-semibold">+62</span>
+                        <input type="tel" id="telp" required placeholder="85xxxxxxxxxx" class="w-full pl-14 pr-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all font-semibold">
+                    </div>
+                </div>
+
+                <!-- ANGGARAN -->
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Estimasi Kekurangan Anggaran (Jika Ada)</label>
+                    <input type="text" id="anggaran" placeholder="Contoh: membutuhkan dana Rp. 15.000.000" class="w-full px-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all">
+                </div>
+
+                <!-- KETERANGAN TAMBAHAN -->
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Catatan / Keterangan Lainnya</label>
+                    <textarea id="keterangan" rows="2" placeholder="Contoh: Aspal di tanjakan curam dekat jembatan." class="w-full px-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all"></textarea>
+                </div>
+
+                <!-- TOMBOL SUBMIT -->
+                <button type="submit" id="btnSubmitForm" class="w-full bg-red-700 hover:bg-red-800 text-white font-bold py-4 px-4 rounded-xl shadow-md transition-all flex items-center justify-center space-x-2 text-base">
+                    <i data-lucide="send" class="w-5 h-5"></i>
+                    <span id="submitBtnText">Kirim Usulan Aspirasi</span>
+                </button>
+            </form>
         </div>
     </main>
 
     <!-- FOOTER -->
-    <footer class="bg-slate-900 text-slate-400 py-6 mt-12 border-t border-slate-800 text-xs">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <div>
-                <p class="font-semibold text-slate-200">Portal Aspirasi Rakyat Mandiri</p>
-                <p class="mt-1">Dibuat sesuai spesifikasi dan struktur instrumen Pokok Pikiran DPRD Kota Semarang.</p>
-            </div>
-            <div class="flex items-center space-x-1 text-slate-500">
-                <span>Made for DPRD Kota Semarang</span>
-                <span>•</span>
-                <span>Yosi Yonardo GRP (Fraksi PDIP)</span>
-            </div>
+    <footer class="bg-slate-900 text-slate-400 py-6 text-center text-xs border-t border-slate-800">
+        <div class="max-w-xl mx-auto px-4">
+            <p class="font-semibold text-slate-200">Portal Aspirasi Rakyat Mandiri</p>
+            <p class="mt-1 text-slate-500">Sesuai spesifikasi instrumen Pokok Pikiran DPRD Kota Semarang.</p>
+            <p class="mt-3 text-[10px] text-slate-600">DPRD Pengusul: Yosi Yonardo GRP, S.E., M.Sos • Fraksi PDI Perjuangan</p>
         </div>
     </footer>
+
+    <!-- MODAL POPUP SUKSES -->
+    <div id="successModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-2xl max-w-sm w-full p-6 text-center shadow-2xl border border-slate-100 transform scale-95 transition-all">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto text-green-600 mb-4 animate-bounce">
+                <i data-lucide="check-circle-2" class="w-10 h-10"></i>
+            </div>
+            <h4 class="text-lg font-bold text-slate-800 mb-2">Berhasil Terkirim!</h4>
+            <p class="text-xs text-slate-500 leading-relaxed mb-6">
+                Terima kasih, aspirasi pembangunan wilayah Anda telah berhasil kami catat dan dikirim langsung ke database Google Sheets tim penyerapan aspirasi DPRD.
+            </p>
+            <button id="btnCloseModal" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 px-4 rounded-xl text-xs transition-all">
+                Selesai & Tutup
+            </button>
+        </div>
+    </div>
 
     <!-- JS LOGIC -->
     <script>
@@ -362,91 +250,11 @@
             ]
         };
 
-        // MOCK DATA AWAL
-        const initialMockData = [
-            {
-                usulan: "pengaspalan",
-                permasalahan: "rusak",
-                jalan: "Karangrejo timur",
-                rt: "2",
-                rw: "1",
-                kel: "Karangrejo",
-                kec: "gajahmungkur",
-                volumeLebar: "2,5 m",
-                volumePanjang: "50 m",
-                volumeGlobal: "",
-                telp: "085640199426",
-                anggaran: "",
-                ket: ""
-            },
-            {
-                usulan: "pembangunan balai rt",
-                permasalahan: "permohonan dana",
-                jalan: "Lempongsari 1",
-                rt: "4",
-                rw: "3",
-                kel: "Lempongsari",
-                kec: "gajahmungkur",
-                volumeLebar: "",
-                volumePanjang: "",
-                volumeGlobal: "160 m³",
-                telp: "081353433100",
-                anggaran: "kekurangan dana Rp. 17.000.000",
-                ket: ""
-            },
-            {
-                usulan: "Talud",
-                permasalahan: "Longsor",
-                jalan: "Jl. Ngaglik Lama",
-                rt: "3",
-                rw: "1",
-                kel: "Bendungan",
-                kec: "gajahmungkur",
-                volumeLebar: "4m",
-                volumePanjang: "2m",
-                volumeGlobal: "",
-                telp: "085878117090",
-                anggaran: "",
-                ket: ""
-            },
-            {
-                usulan: "pembangunan taman",
-                permasalahan: "kurang penghijauan",
-                jalan: "Jl. Grafika, Padangsari",
-                rt: "5",
-                rw: "2",
-                kel: "Padangsari",
-                kec: "banyumanik",
-                volumeLebar: "15 m",
-                volumePanjang: "30 m",
-                volumeGlobal: "",
-                telp: "081234567890",
-                anggaran: "",
-                ket: "Taman bermain ramah anak"
-            },
-            {
-                usulan: "Penerangan Jalan Umum (PJU)",
-                permasalahan: "jalan gelap gulita saat malam",
-                jalan: "Jl. Sekaran Raya",
-                rt: "1",
-                rw: "5",
-                kel: "Sekaran",
-                kec: "gunungpati",
-                volumeLebar: "",
-                volumePanjang: "",
-                volumeGlobal: "10 titik",
-                telp: "087788990011",
-                anggaran: "kekurangan dana Rp. 12.000.000",
-                ket: "Tiang lampu tipe LED hemat energi"
-            }
-        ];
-
-        // State Management
-        let pokirList = [];
-        
-        // TEMPELKAN URL GOOGLE APPS SCRIPT (Web App) ANDA DI BAWAH INI jika ingin permanen:
+        // ----------------- PENTING -----------------
+        // TEMPELKAN URL GOOGLE APPS SCRIPT ANDA DI BAWAH INI:
         // Contoh: let scriptUrl = "https://script.google.com/macros/s/AKfycb...xxx/exec";
-        let scriptUrl = "https://script.google.com/macros/s/AKfycbzpEjCIZPiauf0V3VpEgPqKFlGqCEwRPsgEn4PpZ8JoD3h5uXv-9xMcwvV71x2mshE9Kw/exec";
+        let scriptUrl = "https://script.google.com/macros/s/.../exec";
+        // -------------------------------------------
 
         // Fungsi Memperbarui Opsi Kelurahan berdasarkan Kecamatan yang dipilih
         function updateKelurahanDropdown(selectedKec) {
@@ -455,7 +263,7 @@
             
             if (selectedKec && kelurahanData[selectedKec]) {
                 kelSelect.removeAttribute('disabled');
-                kelSelect.className = "w-full px-2 py-2 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all cursor-pointer";
+                kelSelect.className = "w-full px-3 py-3 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all cursor-pointer font-medium";
                 
                 kelurahanData[selectedKec].forEach(kel => {
                     const opt = document.createElement('option');
@@ -465,182 +273,43 @@
                 });
             } else {
                 kelSelect.setAttribute('disabled', 'true');
-                kelSelect.className = "w-full px-2 py-2 bg-slate-100 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all cursor-not-allowed";
+                kelSelect.className = "w-full px-3 py-3 bg-slate-100 border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all cursor-not-allowed";
             }
         }
 
-        // Event Listener Kecamatan (Deteksi Perubahan Langsung)
+        // Event Listener Kecamatan
         document.getElementById('kecamatan').addEventListener('change', function() {
             updateKelurahanDropdown(this.value.toLowerCase().trim());
         });
 
-        // Inisialisasi Database Lokal / localStorage & Google Sheets URL
-        function initApp() {
-            // Muat API URL (Prioritaskan URL yang di-hardcode dalam kode di atas)
-            if (scriptUrl !== "") {
-                document.getElementById('scriptUrlInput').value = scriptUrl;
-                document.getElementById('integrationStatusText').innerHTML = '<span class="text-green-700 font-bold">Terintegrasi (Permanen via Code).</span> Setiap usulan baru akan langsung dikirim ke Google Sheets Anda.';
+        // Event Listener Jenis Usulan (Munculkan Input "Usulan Lainnya" secara dinamis)
+        document.getElementById('usulan').addEventListener('change', function() {
+            const container = document.getElementById('usulanLainnyaContainer');
+            const customInput = document.getElementById('usulanLainnyaInput');
+            
+            if (this.value === 'lainnya') {
+                container.classList.remove('hidden');
+                customInput.setAttribute('required', 'true');
+                customInput.focus();
             } else {
-                const savedUrl = localStorage.getItem('pokir_sheet_url');
-                if (savedUrl) {
-                    scriptUrl = savedUrl;
-                    document.getElementById('scriptUrlInput').value = savedUrl;
-                    document.getElementById('integrationStatusText').innerHTML = '<span class="text-green-700 font-bold">Terintegrasi (Lokal Browser).</span> Setiap usulan baru akan langsung dikirim ke Google Sheets Anda.';
-                }
-            }
-
-            // Muat Data Tabel
-            const stored = localStorage.getItem('pokir_data');
-            if (stored) {
-                pokirList = JSON.parse(stored);
-            } else {
-                pokirList = [...initialMockData];
-                saveToLocalStorage();
-            }
-            renderTable();
-            updateStats();
-            lucide.createIcons();
-        }
-
-        function saveToLocalStorage() {
-            localStorage.setItem('pokir_data', JSON.stringify(pokirList));
-        }
-
-        // Menyimpan URL Google Sheets Apps Script secara manual via Form Atas
-        document.getElementById('btnSaveUrl').addEventListener('click', function() {
-            const inputVal = document.getElementById('scriptUrlInput').value.trim();
-            if (inputVal === "") {
-                localStorage.removeItem('pokir_sheet_url');
-                scriptUrl = "";
-                document.getElementById('integrationStatusText').innerHTML = "Belum terhubung. Masukkan URL Web App Google Apps Script Anda untuk mengaktifkan penyimpanan otomatis.";
-                alert("URL dihapus. Aplikasi kembali berjalan dalam mode lokal murni.");
-            } else if (inputVal.startsWith("https://script.google.com/")) {
-                localStorage.setItem('pokir_sheet_url', inputVal);
-                scriptUrl = inputVal;
-                document.getElementById('integrationStatusText').innerHTML = '<span class="text-green-700 font-bold">Terintegrasi.</span> Setiap usulan baru akan langsung dikirim ke Google Sheets Anda.';
-                alert("URL Google Apps Script berhasil disimpan dan terintegrasi!");
-            } else {
-                alert("Format URL tidak valid! Harap masukkan URL Web App Google Apps Script yang benar.");
+                container.classList.add('hidden');
+                customInput.removeAttribute('required');
+                customInput.value = '';
             }
         });
 
-        // Render data ke dalam tabel secara dinamis
-        function renderTable() {
-            const tableBody = document.getElementById('pokirTableBody');
-            const emptyState = document.getElementById('emptyState');
-            const searchQuery = document.getElementById('searchInput').value.toLowerCase();
-            const filterKec = document.getElementById('filterKecamatan').value.toLowerCase();
-            
-            tableBody.innerHTML = '';
-            
-            // Lakukan pemfilteran data
-            const filteredList = pokirList.filter((item) => {
-                const textMatch = 
-                    item.usulan.toLowerCase().includes(searchQuery) ||
-                    item.permasalahan.toLowerCase().includes(searchQuery) ||
-                    item.jalan.toLowerCase().includes(searchQuery) ||
-                    item.kel.toLowerCase().includes(searchQuery) ||
-                    item.kec.toLowerCase().includes(searchQuery);
-                
-                const kecMatch = filterKec === "" || item.kec.toLowerCase() === filterKec;
-                
-                return textMatch && kecMatch;
-            });
-
-            if (filteredList.length === 0) {
-                emptyState.classList.remove('hidden');
-            } else {
-                emptyState.classList.add('hidden');
-                
-                filteredList.forEach((item, index) => {
-                    const row = document.createElement('tr');
-                    row.className = "hover:bg-slate-50/70 transition-all border-b border-slate-100";
-                    
-                    // Format tampilan volume
-                    let volDisplay = '-';
-                    if (item.volumeLebar && item.volumePanjang) {
-                        volDisplay = `${item.volumeLebar} x ${item.volumePanjang}`;
-                    } else if (item.volumeGlobal) {
-                        volDisplay = item.volumeGlobal;
-                    } else if (item.volumeLebar || item.volumePanjang) {
-                        volDisplay = item.volumeLebar || item.volumePanjang;
-                    }
-
-                    // Format nomor telepon agar cantik
-                    const formattedPhone = item.telp.startsWith('0') ? item.telp : '0' + item.telp.replace(/^62/, '');
-
-                    row.innerHTML = `
-                        <td class="py-3 px-4 text-center font-bold text-slate-400">${index + 1}</td>
-                        <td class="py-3 px-4">
-                            <div class="font-bold text-slate-800 capitalize">${item.usulan}</div>
-                            <div class="text-slate-500 text-[11px] mt-0.5"><span class="font-medium text-slate-600">Masalah:</span> ${item.permasalahan}</div>
-                        </td>
-                        <td class="py-3 px-4">
-                            <div class="text-slate-800 font-medium">${item.jalan}</div>
-                            <div class="text-slate-400 text-[10px] mt-0.5">RT ${item.rt} / RW ${item.rw} • Kel. <span class="capitalize font-semibold text-slate-500">${item.kel}</span>, Kec. <span class="uppercase font-semibold text-red-600">${item.kec}</span></div>
-                        </td>
-                        <td class="py-3 px-4 text-center font-medium text-slate-600">${volDisplay}</td>
-                        <td class="py-3 px-4">
-                            <div class="flex items-center gap-1 text-slate-600">
-                                <i data-lucide="phone" class="w-3.5 h-3.5 text-green-600"></i>
-                                <span>${formattedPhone}</span>
-                            </div>
-                            <div class="text-amber-700 font-semibold text-[11px] mt-0.5">${item.anggaran || '-'}</div>
-                            ${item.ket ? `<div class="text-slate-400 text-[10px] italic mt-0.5">Ket: ${item.ket}</div>` : ''}
-                        </td>
-                        <td class="py-3 px-4 text-center">
-                            <button onclick="deleteItem(${index})" class="text-slate-400 hover:text-red-600 p-1.5 rounded-lg hover:bg-red-50 transition-all" title="Hapus Usulan">
-                                <i data-lucide="trash-2" class="w-4 h-4"></i>
-                            </button>
-                        </td>
-                    `;
-                    tableBody.appendChild(row);
-                });
-            }
+        // Inisialisasi awal
+        window.onload = function() {
             lucide.createIcons();
-        }
-
-        // Kalkulasi Statistik Kecil
-        function updateStats() {
-            document.getElementById('statTotal').innerText = pokirList.length;
             
-            if (pokirList.length === 0) {
-                document.getElementById('statKelurahan').innerText = '-';
-                document.getElementById('statKecamatan').innerText = '-';
-                return;
+            // Mengambil URL dari penyimpanan lokal browser jika ada (opsi cadangan)
+            const savedUrl = localStorage.getItem('pokir_sheet_url');
+            if (savedUrl && scriptUrl === "https://script.google.com/macros/s/.../exec") {
+                scriptUrl = savedUrl;
             }
+        };
 
-            // Cari Kelurahan & Kecamatan Teraktif
-            const kelCounts = {};
-            const kecCounts = {};
-            pokirList.forEach(item => {
-                const kel = item.kel.trim().toLowerCase();
-                kelCounts[kel] = (kelCounts[kel] || 0) + 1;
-
-                const kec = item.kec.trim().toLowerCase();
-                kecCounts[kec] = (kecCounts[kec] || 0) + 1;
-            });
-
-            const topKel = Object.keys(kelCounts).reduce((a, b) => kelCounts[a] > kelCounts[b] ? a : b);
-            const topKec = Object.keys(kecCounts).reduce((a, b) => kecCounts[a] > kecCounts[b] ? a : b);
-
-            document.getElementById('statKelurahan').innerText = topKel;
-            document.getElementById('statKelurahan').className = "text-sm font-bold text-slate-800 capitalize truncate block max-w-[120px]";
-            document.getElementById('statKecamatan').innerText = topKec;
-            document.getElementById('statKecamatan').className = "text-sm font-bold text-slate-800 uppercase truncate block max-w-[120px]";
-        }
-
-        // Hapus Usulan Lokal
-        window.deleteItem = function(index) {
-            if(confirm("Apakah Anda yakin ingin menghapus usulan ini secara lokal? (Catatan: Ini tidak akan menghapus data yang sudah masuk ke Google Sheets)")) {
-                pokirList.splice(index, 1);
-                saveToLocalStorage();
-                renderTable();
-                updateStats();
-            }
-        }
-
-        // Event Form Submit (Menyimpan dan Mengirim ke Spreadsheet)
+        // Event Form Submit (Mengirim ke Spreadsheet)
         document.getElementById('pokirForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
@@ -650,8 +319,12 @@
             const rawPhone = document.getElementById('telp').value;
             const processedPhone = '0' + rawPhone.replace(/\D/g, '').replace(/^0/, '').replace(/^62/, '');
 
+            // Mengambil jenis usulan yang sesuai (jika pilih 'lainnya', ambil dari text box)
+            const usulanSelect = document.getElementById('usulan').value;
+            const finalUsulan = usulanSelect === 'lainnya' ? document.getElementById('usulanLainnyaInput').value : usulanSelect;
+
             const newPokir = {
-                usulan: document.getElementById('usulan').value,
+                usulan: finalUsulan,
                 permasalahan: document.getElementById('permasalahan').value,
                 jalan: document.getElementById('alamatJalan').value,
                 rt: document.getElementById('rt').value,
@@ -666,131 +339,56 @@
                 ket: document.getElementById('keterangan').value
             };
 
-            // Nonaktifkan tombol untuk menghindari klik ganda
+            // Nonaktifkan tombol untuk menghindari pengiriman ganda
             btnSubmit.setAttribute('disabled', 'true');
             btnSubmit.classList.add('opacity-75', 'cursor-not-allowed');
-            btnText.innerText = 'Mengirim Data...';
+            btnText.innerText = 'Sedang Mengirim...';
 
-            let successMessage = "Usulan baru berhasil ditambahkan secara lokal.";
-
-            // Jika ada URL integrasi Google Sheets
-            if (scriptUrl) {
+            // Kirim ke Google Apps Script (Spreadsheet)
+            if (scriptUrl && scriptUrl !== "https://script.google.com/macros/s/.../exec") {
                 try {
-                    // Kirim ke Google Apps Script dengan header CORS yang sesuai
-                    const response = await fetch(scriptUrl, {
+                    await fetch(scriptUrl, {
                         method: 'POST',
-                        mode: 'no-cors', // Penting untuk mengirim tanpa hambatan CORS
+                        mode: 'no-cors', 
                         headers: {
                             'Content-Type': 'application/json'
                         },
                         body: JSON.stringify(newPokir)
                     });
-                    
-                    successMessage = "Aspirasi Anda berhasil terkirim dan disimpan langsung di Google Sheets!";
                 } catch (error) {
                     console.error("Gagal mengirim ke Google Sheets:", error);
-                    successMessage = "Data tersimpan lokal, namun gagal mengirim ke Google Sheets. Silakan periksa koneksi internet atau URL Apps Script Anda.";
                 }
+            } else {
+                console.warn("URL Google Sheets belum diset. Data tersimpan sementara secara virtual.");
             }
 
-            // Tambahkan ke tabel lokal
-            pokirList.unshift(newPokir);
-            saveToLocalStorage();
-            renderTable();
-            updateStats();
+            // Tampilkan Modal Sukses
+            document.getElementById('successModal').classList.remove('hidden');
 
-            // Aktifkan kembali tombol
+            // Aktifkan kembali tombol submit
             btnSubmit.removeAttribute('disabled');
             btnSubmit.classList.remove('opacity-75', 'cursor-not-allowed');
             btnText.innerText = 'Kirim Usulan Pokir';
 
-            // Bersihkan form input
+            // Bersihkan form input setelah dikirim
             document.getElementById('pokirForm').reset();
             
-            // Kunci kembali dropdown kelurahan setelah di-reset
+            // Sembunyikan dan bersihkan input usulan lainnya
+            document.getElementById('usulanLainnyaContainer').classList.add('hidden');
+            document.getElementById('usulanLainnyaInput').removeAttribute('required');
+            document.getElementById('usulanLainnyaInput').value = '';
+
+            // Kunci kembali dropdown kelurahan
             const kelSelect = document.getElementById('kelurahan');
             kelSelect.innerHTML = '<option value="" disabled selected>Pilih Kec. dulu</option>';
             kelSelect.setAttribute('disabled', 'true');
-            kelSelect.className = "w-full px-2 py-2 bg-slate-100 border border-slate-300 rounded-lg text-sm transition-all cursor-not-allowed";
-
-            alert(successMessage);
-
-            // Scroll ke arah tabel di HP
-            if (window.innerWidth < 1024) {
-                document.getElementById('pokirTableBody').scrollIntoView({ behavior: 'smooth' });
-            }
+            kelSelect.className = "w-full px-3 py-3 bg-slate-100 border border-slate-300 rounded-xl text-sm transition-all cursor-not-allowed";
         });
 
-        // Event Filter & Search
-        document.getElementById('searchInput').addEventListener('input', renderTable);
-        document.getElementById('filterKecamatan').addEventListener('change', renderTable);
-
-        // Reset Data Ke Awal
-        document.getElementById('btnReset').addEventListener('click', function() {
-            if (confirm("Apakah Anda yakin ingin menghapus data sementara di browser ini dan memuat ulang data percontohan?")) {
-                localStorage.removeItem('pokir_data');
-                initApp();
-            }
+        // Event menutup modal sukses
+        document.getElementById('btnCloseModal').addEventListener('click', function() {
+            document.getElementById('successModal').classList.add('hidden');
         });
-
-        // Ekspor ke CSV
-        document.getElementById('btnExport').addEventListener('click', function() {
-            if (pokirList.length === 0) {
-                alert("Tidak ada data untuk diekspor!");
-                return;
-            }
-
-            let csvContent = "data:text/csv;charset=utf-8,";
-            csvContent += "TAMBAHAN USULAN\r\n";
-            csvContent += "POKOK-POKOK PIKIRAN (POKIR) DPRD KOTA SEMARANG\r\n";
-            csvContent += "APBD TAHUN ANGGARAN\r\n";
-            csvContent += "( USULAN SECARA OFF-LINE )\r\n\r\n";
-            csvContent += "FRAKSI,,: PDI PERJUANGAN,,,,KOMISI,,: B\r\n";
-            csvContent += "NAMA ANGGOTA DPRD,,\": YOSI YONARDO GRP, S.E., M.Sos\",,,,TELP./WA,,:\r\n\r\n";
-            csvContent += "NO,USULAN ,PERMASALAHAN,ALAMAT,,,,,VOLUME,,TELP./WA,ANGGARAN,KET.\r\n";
-            csvContent += ",,,JALAN,RT,RW,KEL,KEC\r\n";
-
-            pokirList.forEach((item, index) => {
-                const clean = (val) => {
-                    if (!val) return "";
-                    let v = val.toString().replace(/"/g, '""');
-                    if (v.includes(",") || v.includes("\n") || v.includes("\r")) {
-                        return `"${v}"`;
-                    }
-                    return v;
-                };
-
-                const usulan = clean(item.usulan);
-                const masalah = clean(item.permasalahan);
-                const jalan = clean(item.jalan);
-                const rt = clean(item.rt);
-                const rw = clean(item.rw);
-                const kel = clean(item.kel);
-                const kec = clean(item.kec);
-                
-                const volA = clean(item.volumeLebar || item.volumeGlobal);
-                const volB = clean(item.volumePanjang);
-
-                const telp = clean(item.telp);
-                const anggaran = clean(item.anggaran);
-                const ket = clean(item.ket);
-
-                csvContent += `${index + 1},${usulan},${masalah},${jalan},${rt},${rw},${kel},${kec},${volA},${volB},${telp},${anggaran},${ket}\r\n`;
-            });
-
-            const encodedUri = encodeURI(csvContent);
-            const link = document.createElement("a");
-            link.setAttribute("href", encodedUri);
-            link.setAttribute("download", "POKIR_MANDIRI_KOTA_SEMARANG.csv");
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        });
-
-        // Jalankan Aplikasi saat DOM siap
-        window.onload = function() {
-            initApp();
-        };
     </script>
 </body>
 </html>
